@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node models/seeds/seeder.js"
+    "seed": "node models/seeds/categorySeeder.js && node models/seeds/recordSeeder.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.17.1",
     "install": "^0.13.0",
+    "lodash": "^4.17.21",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.7",
     "passport": "^0.4.1",
