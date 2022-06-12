@@ -51,11 +51,11 @@ module.exports = app => {
   }))
 
   passport.serializeUser((user, done) => {
-    done(null, user.id)
+    done(null, user._id)
   })
 
-  passport.deserializeUser((id, done) => {
-    User.findById(id)
+  passport.deserializeUser((_id, done) => {
+    User.findById(_id)
     .lean()
     .then(user => done(null, user))
     .catch(err => done(err, null))
