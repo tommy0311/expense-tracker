@@ -64,16 +64,10 @@ function createUsers() {
 }
 
 db.once('open', () => {
-  let categorys = []
   let users = []
   let records = []
 
-  getCategorys()
-  .then( _categorys =>{
-    categorys = lodash.cloneDeep(_categorys) 
-
-    return createUsers()
-  })
+  createUsers()
   .then( _users => {
     users = lodash.cloneDeep(_users)
 
@@ -82,9 +76,7 @@ db.once('open', () => {
       (_, i) => {
         const result = SEED_RECORDS.filter(obj => Number(obj.userId) === users[i].id)
         for (const record of result) {
-          record.userId =  users[i]._id;
-          let categoryIndex = record.categoryId - 1
-          record.categoryId = categorys[categoryIndex]._id
+          record.userId = users[i]._id;
           records.push(record)
         }
       }

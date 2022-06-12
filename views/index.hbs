@@ -1,1 +1,53 @@
-<p>hello world</p>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="btn-group d-grid mt-5 mb-4 mx-2">
+        <button type="button" class="btn btn-block btn-secondary dropdown-toggle dropdown-toggle-split"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          類別： {{categoryTitle}}
+        </button>
+        <ul class="dropdown-menu w-100" style="background-color:whitesmoke;">
+          <li><a class="dropdown-item" href="?categoryId=0">全部</a></li>
+          <li><a class="dropdown-item" href="?categoryId=1">家居物業</a></li>
+          <li><a class="dropdown-item" href="?categoryId=2">交通出行</a></li>
+          <li><a class="dropdown-item" href="?categoryId=3">休閒娛樂</a></li>
+          <li><a class="dropdown-item" href="?categoryId=4">餐飲食品</a></li>
+          <li><a class="dropdown-item" href="?categoryId=5">其他</a></li>
+        </ul>
+      </div>
+      <div class="row justify-content-center mb-3">
+        <div class="col-5"><strong>總金額:</strong></div>
+        <div class="col-6" style="font-size: xx-large;">{{totalAmount}}</div>
+      </div>
+      {{#each records}}
+      <div class="row mx-1 mb-3 ">
+        <div class="col-8">
+          <div class="row">
+            <div class="col-1 m-auto">
+              <i class="fa-solid fa-house fa-lg"></i>
+            </div>
+            <div class="col-11 m-auto">
+              <div>
+                <strong>{{this.name}}</strong>
+              </div>
+              <div>
+                <strong>{{this.date}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 m-auto text-end"><strong>{{this.amount}}</strong></div>
+        <div class="col-2 m-auto text-end">
+          <button type="button" class="btn btn-sm btn-info">修改</button>
+          <button type="button" class="btn btn-sm btn-info">刪除</button>
+        </div>
+      </div>
+      {{/each}}
+      <div class="row justify-content-center mt-5">
+        <div class=" col-8 mx-auto text-center">
+          <a class="btn btn-danger" style="width: 100%;">新增支出</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
