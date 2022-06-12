@@ -1,0 +1,61 @@
+{
+  "SEED_CATEGORIES": [
+    {
+      "id": 1,
+      "name": "家居物業"
+    },
+    {
+      "id": 2,
+      "name": "交通出行"
+    },
+    {
+      "id": 3,
+      "name": "休閒娛樂"
+    },
+    {
+      "id": 4,
+      "name": "餐飲食品"
+    },
+    {
+      "id": 5,
+      "name": "其他"
+    }
+  ],
+  "SEED_USERS": [
+    {
+      "id": 1,
+      "name": "user1",
+      "email": "user1@example.com",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "name": "user2",
+      "email": "user2@example.com",
+      "password": "12345678"
+    }
+  ],
+  "SEED_RECORDS": [
+    {
+      "id": 1,
+      "name": "bus",
+      "amount": 15,
+      "userId": 1,
+      "categoryId": 2
+    },
+    {
+      "id": 2,
+      "name": "movie",
+      "amount": 15,
+      "userId": 2,
+      "categoryId": 3
+    },
+    {
+      "id": 3,
+      "name": "lunch",
+      "amount": 100,
+      "userId": 1,
+      "categoryId": 4
+    }
+  ]
+}

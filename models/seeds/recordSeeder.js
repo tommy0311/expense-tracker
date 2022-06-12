@@ -11,44 +11,8 @@ const RecordModel = require('../record')
 const db = require('../../config/mongoose');
 const user = require('../user');
 
-const SEED_USERS = [
-  {
-    "id": 1,
-    "name": 'user1',
-    "email": 'user1@example.com',
-    "password": '12345678'
-  },
-  {
-    "id": 2,
-    "name": 'user2',
-    "email": 'user2@example.com',
-    "password": '12345678'
-  }
-]
-
-const SEED_RECORDS = [
-  {
-    "id": 1,
-    "name": "bus",
-    "amount": 15,
-    "userId": 1,
-    "categoryId": 2
-  },
-  {
-    "id": 2,
-    "name": "movie",
-    "amount": 15,
-    "userId": 2,
-    "categoryId": 3
-  },
-  {
-    "id": 3,
-    "name": "lunch",
-    "amount": 100,
-    "userId": 1,
-    "categoryId": 4
-  },
-]
+const { SEED_USERS } = require('../../seeds.json')
+const { SEED_RECORDS } = require('../../seeds.json')
 
 function getCategorys() {
   return new Promise((resolve, reject) => {
