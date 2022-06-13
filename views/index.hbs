@@ -19,30 +19,38 @@
         <div class="col-5"><strong>總金額:</strong></div>
         <div class="col-6" style="font-size: xx-large;">{{totalAmount}}</div>
       </div>
-      {{#each records}}
-      <div class="row mx-1 mb-3 ">
-        <div class="col-8">
-          <div class="row">
-            <div class="col-1 m-auto">
-              <i class="fa-solid fa-house fa-lg"></i>
-            </div>
-            <div class="col-11 m-auto">
-              <div>
-                <strong>{{this.name}}</strong>
+      <div class="col-11" style="margin-left:auto;margin-right:auto">
+        <table id="recordRows" style="width:100%;">
+        {{#each records}}
+          <tr>
+            <td>
+              <div class="row mx-2 my-2">
+                <div class="col-8">
+                  <div class="row">
+                    <div class="col-1 m-auto">
+                      <i class="fa-solid fa-house fa-lg"></i>
+                    </div>
+                    <div class="col-11 m-auto">
+                      <div>
+                        <strong>{{this.name}}</strong>
+                      </div>
+                      <div>
+                        <strong>{{this.date}}</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-2 m-auto text-end"><strong>{{this.amount}}</strong></div>
+                <div class="col-2 m-auto text-end">
+                  <button type="button" class="btn btn-sm btn-info">修改</button>
+                  <button type="button" class="btn btn-sm btn-info">刪除</button>
+                </div>
               </div>
-              <div>
-                <strong>{{this.date}}</strong>
-              </div>
-            </div>
-          </div>
+            </td>
+            </tr>
+        {{/each}}
+        </table>
         </div>
-        <div class="col-2 m-auto text-end"><strong>{{this.amount}}</strong></div>
-        <div class="col-2 m-auto text-end">
-          <button type="button" class="btn btn-sm btn-info">修改</button>
-          <button type="button" class="btn btn-sm btn-info">刪除</button>
-        </div>
-      </div>
-      {{/each}}
       <div class="row justify-content-center mt-5">
         <div class=" col-8 mx-auto text-center">
           <a class="btn btn-danger" style="width: 100%;">新增支出</a>

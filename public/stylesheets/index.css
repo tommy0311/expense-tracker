@@ -1,0 +1,8 @@
+#recordRows tr:nth-child(even) {
+  background-color: #BDE3FB;
+
+}
+
+#recordRows tr:nth-child(odd) {
+  background-color: whitesmoke;
+}

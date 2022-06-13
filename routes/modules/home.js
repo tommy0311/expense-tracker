@@ -10,7 +10,6 @@ router.get("/", (req, res) => {
   const userId = req.user._id
   const categoryId = req.query.categoryId ? Number(req.query.categoryId) : 0
 
-  console.log("cate:" + categoryId)
   if( categoryId > 0) {
     findObj = { userId, categoryId } 
   } 
