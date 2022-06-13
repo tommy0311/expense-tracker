@@ -27,8 +27,9 @@
               <div class="row mx-2 my-2">
                 <div class="col-8">
                   <div class="row">
+                    <div id="recordCategoryId"></div>
                     <div class="col-1 m-auto">
-                      <i class="fa-solid fa-house fa-lg"></i>
+                      <script>renderRecordIcon({{ this.categoryId }})</script>
                     </div>
                     <div class="col-11 m-auto">
                       <div>

@@ -38,24 +38,73 @@
   "SEED_RECORDS": [
     {
       "id": 1,
-      "name": "bus",
-      "amount": 15,
+      "name": "衛生紙",
+      "amount": 299,
+      "userId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "垃圾袋",
+      "amount": 75,
+      "userId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "name": "公車",
+      "amount": 20,
       "userId": 1,
       "categoryId": 2
     },
     {
-      "id": 2,
-      "name": "movie",
-      "amount": 15,
+      "id": 4,
+      "name": "火車",
+      "amount": 550,
+      "userId": 1,
+      "categoryId": 2
+    },
+    {
+      "id": 5,
+      "name": "計程車",
+      "amount": 220,
+      "userId": 1,
+      "categoryId": 2
+    },
+    {
+      "id": 6,
+      "name": "電影",
+      "amount": 300,
       "userId": 2,
       "categoryId": 3
     },
     {
-      "id": 3,
-      "name": "lunch",
-      "amount": 100,
-      "userId": 1,
+      "id": 7,
+      "name": "鹹酥雞",
+      "amount": 200,
+      "userId": 2,
       "categoryId": 4
+    },
+    {
+      "id": 8,
+      "name": "滷味",
+      "amount": 150,
+      "userId": 2,
+      "categoryId": 4
+    },
+    {
+      "id": 9,
+      "name": "章魚燒",
+      "amount": 50,
+      "userId": 2,
+      "categoryId": 4
+    },
+    {
+      "id": 10,
+      "name": "水費",
+      "amount": 480,
+      "userId": 2,
+      "categoryId": 5
     }
   ]
 }
