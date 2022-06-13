@@ -40,10 +40,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-2 m-auto text-end"><strong>{{this.amount}}</strong></div>
-                <div class="col-2 m-auto text-end">
-                  <button type="button" class="btn btn-sm btn-info">修改</button>
-                  <button type="button" class="btn btn-sm btn-info">刪除</button>
+                <div class="col-2 my-auto pe-1 text-end"><strong>{{this.amount}}</strong></div>
+                <div class="col-2 m-auto pe-1 text-end">
+                  <a class="btn btn-sm btn-info" href="/records/{{this.id}}/edit">修改</a>
+                  <form action="/records/{{ this.id }}?_method=DELETE&categoryId={{categoryId}}" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-sm btn-info">刪除</button>
+                  </form>
                 </div>
               </div>
             </td>

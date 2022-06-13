@@ -5,17 +5,10 @@ const CategoryModel = require('../../models/category')
 const RecordModel = require('../../models/record')
 
 router.get("/", (req, res) => {
-  let findObj
-  let categoryTitle
   const userId = req.user._id
+  let categoryTitle = ""
   const categoryId = req.query.categoryId ? Number(req.query.categoryId) : 0
-
-  if( categoryId > 0) {
-    findObj = { userId, categoryId } 
-  } 
-  else {
-    findObj = { userId }
-  }
+  const findObj = categoryId ? { userId, categoryId } : { userId }
 
   CategoryModel.findOne({ "id": categoryId })
   .then( category => {
@@ -30,7 +23,7 @@ router.get("/", (req, res) => {
       for (const [index, record] of records.entries()){
         totalAmount = totalAmount + record.amount
       }
-      res.render("index", { records, categoryTitle, totalAmount})
+      res.render("index", { records, categoryId, categoryTitle, totalAmount})
     })
     .catch(error => console.log(error))
   })
