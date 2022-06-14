@@ -30,7 +30,7 @@ router.get("/", (req, res) => {
       for (const [index, record] of records.entries()){
         totalAmount = totalAmount + record.amount
       }
-      res.render("index", { records, category, totalAmount})
+      res.render("index", { records, "categoryId": category.id, category, totalAmount})
     })
     .catch(error => console.log(error))
   })
