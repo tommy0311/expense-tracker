@@ -4,7 +4,7 @@
       <div class="btn-group d-grid mt-5 mb-4 mx-2">
         <button type="button" class="btn btn-block btn-secondary dropdown-toggle dropdown-toggle-split"
           data-bs-toggle="dropdown" aria-expanded="false">
-          類別： {{categoryTitle}}
+          類別： {{category.name}}
         </button>
         <ul class="dropdown-menu w-100" style="background-color:whitesmoke;">
           <li><a class="dropdown-item" href="?categoryId=0">全部</a></li>
@@ -44,7 +44,7 @@
                 <div class="col-2 my-auto pe-1 text-end"><strong>{{this.amount}}</strong></div>
                 <div class="col-2 m-auto pe-1 text-end">
                   <a class="btn btn-sm btn-info my-1" href="/records/{{this.id}}/edit">修改</a>
-                  <form action="/records/{{ this.id }}?_method=DELETE&categoryId={{categoryId}}" method="POST" style="display: inline;">
+                  <form action="/records/{{ this.id }}?_method=DELETE&categoryId={{category.id}}" method="POST" style="display: inline;">
                     <button type="submit" class="btn btn-sm btn-info my-1">刪除</button>
                   </form>
                 </div>
