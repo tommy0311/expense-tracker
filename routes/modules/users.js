@@ -6,13 +6,20 @@ const passport = require('passport')
 const bcrypt = require('bcryptjs') 
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  const errorMessage = req.flash('error')
+  const errors = []
+  
+  if (errorMessage.length) {
+    errors.push({ message: errorMessage[0] })
+  }
+  res.render('login', { errors })
 })
 
 // 加入 middleware，驗證 request 登入狀態
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login'
+  failureRedirect: '/users/login',
+  failureFlash: true
 }))
 
 router.get('/register', (req, res) => {
