@@ -43,9 +43,9 @@
                 </div>
                 <div class="col-2 my-auto pe-1 text-end"><strong>{{this.amount}}</strong></div>
                 <div class="col-2 m-auto pe-1 text-end">
-                  <a class="btn btn-sm btn-info" href="/records/{{this.id}}/edit">修改</a>
+                  <a class="btn btn-sm btn-info my-1" href="/records/{{this.id}}/edit">修改</a>
                   <form action="/records/{{ this.id }}?_method=DELETE&categoryId={{categoryId}}" method="POST" style="display: inline;">
-                    <button type="submit" class="btn btn-sm btn-info">刪除</button>
+                    <button type="submit" class="btn btn-sm btn-info my-1">刪除</button>
                   </form>
                 </div>
               </div>
@@ -54,7 +54,7 @@
         {{/each}}
         </table>
         </div>
-      <div class="row justify-content-center mt-5">
+      <div class="row justify-content-center my-5">
         <div class=" col-8 mx-auto text-center">
           <a class="btn btn-danger" style="width: 100%;">新增支出</a>
         </div>
