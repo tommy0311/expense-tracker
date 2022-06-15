@@ -1,0 +1,54 @@
+<script src="/javascripts/record.js"></script>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      {{> message}}
+      <form action="/records/{{ record.id }}?_method=PUT" method="POST">
+        <div class="row justify-content-center mt-5 mb-3">
+          <div class="col-2"><strong>*必填欄位</strong></div>
+          <div class="col-5" style="font-size: large;"><strong>請修改你的支出</strong></div>
+        </div>
+        <div class="row justify-content-center mb-3">
+          <div class="col-2"><strong>*名稱：</strong></div>
+          <div class="col-5" style="font-size: large;">
+            <strong><input class="form-control mb-2" type="text" name="name" value={{record.name}}></strong>
+          </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+          <div class="col-2"><strong>*日期：</strong></div>
+          <div class="col-5" style="font-size: large;">
+            <input type="date" class="form-control" name="date" value={{record.date}}>
+          </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+          <input type="number" name="categoryId" style="display:none;" id="categoryId" value={{record.categoryId}} />
+          <div class="col-2"><strong>*類別：</strong></div>
+          <div class="col-5 btn-group " style="font-size: large;">
+            <button type="button" class="btn btn-block btn-secondary dropdown-toggle dropdown-toggle-split"
+              data-bs-toggle="dropdown" aria-expanded="false" id="categoryBtn">
+              類別： {{category.name}}
+            </button>
+            <ul class="dropdown-menu w-100" style="background-color:whitesmoke;">
+              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(1)">家居物業</button></li>
+              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(2)">交通出行</button></li>
+              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(3)">休閒娛樂</button></li>
+              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(4)">餐飲食品</button></li>
+              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(5)">其他</button></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+          <div class="col-2"><strong>*金額：</strong></div>
+          <div class="col-5" style="font-size: large;">
+            <strong><input class="form-control mb-2" type="number" name="amount" value={{record.amount}}></strong>
+          </div>
+        </div>
+        <div class="row justify-content-center my-5">
+          <div class=" col-4 mx-auto text-center">
+            <button type="submit" class="btn btn-danger" style="width: 100%;">送出</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

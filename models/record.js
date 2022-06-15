@@ -11,8 +11,9 @@ const recordSchema = new Schema({
     default: ""
   },
   date: {
-    type: Date,
-    default: Date.now
+    type: String,
+    required: true,
+    default: ""
   },
   amount: {
     type: Number,

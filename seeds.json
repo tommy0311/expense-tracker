@@ -39,6 +39,7 @@
     {
       "id": 1,
       "name": "衛生紙",
+      "date": "2022-07-01",
       "amount": 299,
       "userId": 1,
       "categoryId": 1
@@ -46,6 +47,7 @@
     {
       "id": 2,
       "name": "垃圾袋",
+      "date": "2023-06-02",
       "amount": 75,
       "userId": 1,
       "categoryId": 1
@@ -53,6 +55,7 @@
     {
       "id": 3,
       "name": "公車",
+      "date": "2021-04-01",
       "amount": 20,
       "userId": 1,
       "categoryId": 2
@@ -60,6 +63,7 @@
     {
       "id": 4,
       "name": "火車",
+      "date": "2021-05-01",
       "amount": 550,
       "userId": 1,
       "categoryId": 2
@@ -67,6 +71,7 @@
     {
       "id": 5,
       "name": "計程車",
+      "date": "2021-06-01",
       "amount": 220,
       "userId": 1,
       "categoryId": 2
@@ -74,6 +79,7 @@
     {
       "id": 6,
       "name": "電影",
+      "date": "2020-01-01",
       "amount": 300,
       "userId": 2,
       "categoryId": 3
@@ -81,6 +87,7 @@
     {
       "id": 7,
       "name": "鹹酥雞",
+      "date": "2021-03-01",
       "amount": 200,
       "userId": 2,
       "categoryId": 4
@@ -88,6 +95,7 @@
     {
       "id": 8,
       "name": "滷味",
+      "date": "2021-02-01",
       "amount": 150,
       "userId": 2,
       "categoryId": 4
@@ -95,6 +103,7 @@
     {
       "id": 9,
       "name": "章魚燒",
+      "date": "2021-01-01",
       "amount": 50,
       "userId": 2,
       "categoryId": 4
@@ -102,6 +111,7 @@
     {
       "id": 10,
       "name": "水費",
+      "date": "2024-08-01",
       "amount": 480,
       "userId": 2,
       "categoryId": 5

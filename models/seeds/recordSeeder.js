@@ -5,7 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const UserModel = require('../user')
-const CategoryModel = require('../category')
 const RecordModel = require('../record')
 
 const db = require('../../config/mongoose');
@@ -13,23 +12,6 @@ const user = require('../user');
 
 const { SEED_USERS } = require('../../seeds.json')
 const { SEED_RECORDS } = require('../../seeds.json')
-
-function getCategorys() {
-  return new Promise((resolve, reject) => {
-    CategoryModel
-    .find()
-    .lean()
-    .sort( { id:'asc' })
-    .then((categorys) =>{
-      console.log('getCategorys done')
-      resolve(categorys)
-    })
-    .catch( error => {
-      console.log('getCategorys error')
-      reject(error)
-    })
-  });
-}
 
 function createUsers() {
   let users = []

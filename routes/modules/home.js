@@ -11,10 +11,10 @@ router.get("/", (req, res) => {
     "id": 0,
     "name":  "全部"
   }
-  const categoryId = req.query.categoryId ? Number(req.query.categoryId) : 0
-  const findObj = categoryId ? { userId, categoryId } : { userId }
+  const categoryMenu = req.query.categoryMenu ? Number(req.query.categoryMenu) : 0
+  const findObj = categoryMenu ? { userId, "categoryId": categoryMenu } : { userId }
 
-  CategoryModel.findOne({ "id": categoryId })
+  CategoryModel.findOne({ "id": categoryMenu })
   .lean()
   .then( obj => {
     if(obj){
@@ -24,18 +24,17 @@ router.get("/", (req, res) => {
   .then(() => {
     return RecordModel.find( findObj )
     .lean()
-    .sort({ date: 'asc' })
+    .sort({ date: 'desc' })
     .then( records => {
       let totalAmount = 0
       for (const [index, record] of records.entries()){
         totalAmount = totalAmount + record.amount
       }
-      res.render("index", { records, "categoryId": category.id, category, totalAmount})
+      res.render("index", { records, categoryMenu, category, totalAmount})
     })
     .catch(error => console.log(error))
   })
   .catch(error => console.log(error))
-  
 });
 
 module.exports = router

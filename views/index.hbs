@@ -1,3 +1,4 @@
+<script src="/javascripts/index.js"></script>
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-8">
@@ -7,12 +8,12 @@
           類別： {{category.name}}
         </button>
         <ul class="dropdown-menu w-100" style="background-color:whitesmoke;">
-          <li><a class="dropdown-item" href="?categoryId=0">全部</a></li>
-          <li><a class="dropdown-item" href="?categoryId=1">家居物業</a></li>
-          <li><a class="dropdown-item" href="?categoryId=2">交通出行</a></li>
-          <li><a class="dropdown-item" href="?categoryId=3">休閒娛樂</a></li>
-          <li><a class="dropdown-item" href="?categoryId=4">餐飲食品</a></li>
-          <li><a class="dropdown-item" href="?categoryId=5">其他</a></li>
+          <li><a class="dropdown-item" href="?categoryMenu=0">全部</a></li>
+          <li><a class="dropdown-item" href="?categoryMenu=1">家居物業</a></li>
+          <li><a class="dropdown-item" href="?categoryMenu=2">交通出行</a></li>
+          <li><a class="dropdown-item" href="?categoryMenu=3">休閒娛樂</a></li>
+          <li><a class="dropdown-item" href="?categoryMenu=4">餐飲食品</a></li>
+          <li><a class="dropdown-item" href="?categoryMenu=5">其他</a></li>
         </ul>
       </div>
       <div class="row justify-content-center mb-3">
@@ -44,7 +45,7 @@
                 <div class="col-2 my-auto pe-1 text-end"><strong>{{this.amount}}</strong></div>
                 <div class="col-2 m-auto pe-1 text-end">
                   <a class="btn btn-sm btn-info my-1" href="/records/{{this.id}}/edit">修改</a>
-                  <form action="/records/{{ this.id }}?_method=DELETE&categoryId={{categoryId}}" method="POST" style="display: inline;">
+                  <form action="/records/{{ this.id }}?_method=DELETE" method="POST" style="display: inline;">
                     <button type="submit" class="btn btn-sm btn-info my-1">刪除</button>
                   </form>
                 </div>
@@ -55,8 +56,8 @@
         </table>
         </div>
       <div class="row justify-content-center my-5">
-        <div class=" col-8 mx-auto text-center">
-          <a class="btn btn-danger" style="width: 100%;">新增支出</a>
+        <div class=" col-5 mx-auto text-center">
+          <a class="btn btn-danger" href="/records/new" style="width: 100%;">新增支出</a>
         </div>
       </div>
     </div>
