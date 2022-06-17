@@ -74,3 +74,4 @@ npm run start
 *   [Express](https://www.npmjs.com/package/express) - 應用程式架構
 *   [Express-Handlebars](https://www.npmjs.com/package/express-handlebars) - 模板引擎
 *   [Mongoose](https://www.npmjs.com/package/mongoose) - Mongoose is a MongoDB object modeling tool
+*   [Passport](https://www.passportjs.org/) - Authentication for Node.js
