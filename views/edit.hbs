@@ -29,11 +29,9 @@
               類別： {{category.name}}
             </button>
             <ul class="dropdown-menu w-100" style="background-color:whitesmoke;">
-              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(1)">家居物業</button></li>
-              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(2)">交通出行</button></li>
-              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(3)">休閒娛樂</button></li>
-              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(4)">餐飲食品</button></li>
-              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn(5)">其他</button></li>
+              {{#each allCategorys}}
+              <li><button type="button" class="dropdown-item" onclick="clickCategoryBtn({{this.id}})">{{this.name}}</button></li>
+              {{/each}}
             </ul>
           </div>
         </div>

@@ -7,12 +7,10 @@ const RecordModel = require('../../models/record')
 
 router.get("/", (req, res) => {
   const userId = req.user._id
-  let category = {
-    "id": 0,
-    "name":  "全部"
-  }
+  let category = undefined
   const categoryMenu = req.query.categoryMenu ? Number(req.query.categoryMenu) : 0
   const findObj = categoryMenu ? { userId, "categoryId": categoryMenu } : { userId }
+  const allCategorys = req.app.get('allCategorys')
 
   CategoryModel.findOne({ "id": categoryMenu })
   .lean()
@@ -30,7 +28,7 @@ router.get("/", (req, res) => {
       for (const [index, record] of records.entries()){
         totalAmount = totalAmount + record.amount
       }
-      res.render("index", { records, categoryMenu, category, totalAmount})
+      res.render("index", { records, allCategorys, category, totalAmount})
     })
     .catch(error => console.log(error))
   })

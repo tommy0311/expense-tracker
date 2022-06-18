@@ -5,15 +5,13 @@
       <div class="btn-group d-grid mt-5 mb-4 mx-2">
         <button type="button" class="btn btn-block btn-secondary dropdown-toggle dropdown-toggle-split"
           data-bs-toggle="dropdown" aria-expanded="false">
-          類別： {{category.name}}
+          類別： {{#if category}} {{category.name}} {{else}} 全部 {{/if}}
         </button>
         <ul class="dropdown-menu w-100" style="background-color:whitesmoke;">
           <li><a class="dropdown-item" href="?categoryMenu=0">全部</a></li>
-          <li><a class="dropdown-item" href="?categoryMenu=1">家居物業</a></li>
-          <li><a class="dropdown-item" href="?categoryMenu=2">交通出行</a></li>
-          <li><a class="dropdown-item" href="?categoryMenu=3">休閒娛樂</a></li>
-          <li><a class="dropdown-item" href="?categoryMenu=4">餐飲食品</a></li>
-          <li><a class="dropdown-item" href="?categoryMenu=5">其他</a></li>
+          {{#each allCategorys}}
+          <li><a class="dropdown-item" href="?categoryMenu={{this.id}}">{{this.name}}</a></li>
+          {{/each}}
         </ul>
       </div>
       <div class="row justify-content-center mb-3">

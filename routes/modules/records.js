@@ -3,7 +3,9 @@ const router = express.Router()
 
 const RecordModel = require('../../models/record')
 const CategoryModel = require('../../models/category')
+const getCategorys =  require('../../models/getCategorys')
 
+/*
 function getCategorys() {
   return new Promise((resolve, reject) => {
     CategoryModel
@@ -14,13 +16,14 @@ function getCategorys() {
       resolve(categorys)
     })
     .catch( error => {
-      reject(error)
+      reject(error)`
     })
   });
-}
+}*/
 
 router.get('/new', (req, res) => {
-	return res.render('new')
+  const allCategorys = req.app.get('allCategorys')
+	return res.render('new', {allCategorys})
 })
 
 router.post('/', (req, res) => {
@@ -74,19 +77,13 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const id = Number(req.params.id)
+  const allCategorys = req.app.get('allCategorys')
 
-  getCategorys()
-  .then(categorys => {
-    return RecordModel.findOne({ id, userId })
-    .lean()
-    .then((record) => {
-      const result = categorys.filter(obj => Number(obj.id) === record.categoryId)
-      res.render('edit', { record, "category":result[0] })
-    })
-    .catch(error => {
-      console.log(error)
-      res.redirect('/')
-    })
+  return RecordModel.findOne({ id, userId })
+  .lean()
+  .then((record) => {
+    const result = allCategorys.filter(obj => Number(obj.id) === record.categoryId)
+    res.render('edit', { record, allCategorys, "category":result[0] })
   })
   .catch(error => {
     console.log(error)

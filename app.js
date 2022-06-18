@@ -11,6 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 const routes = require('./routes') // It is equal to require('./routes/index')
 require('./config/mongoose')
 const usePassport = require('./config/passport')
+const getCategorys =  require('./models/getCategorys')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -37,6 +38,10 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg')
   res.locals.warning_msg = req.flash('warning_msg')
   next()
+})
+
+getCategorys().then( (categorys) => {
+  app.set('allCategorys', categorys);
 })
 
 app.use(routes)
