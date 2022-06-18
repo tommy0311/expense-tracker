@@ -33,6 +33,7 @@ router.get('/logout', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
+  let maxId = 1;
   const { name, email, password, confirmPassword } = req.body
   const errors = []
   if (!email || !password || !confirmPassword) {
@@ -61,16 +62,28 @@ router.post('/register', (req, res) => {
         confirmPassword
       })
     }
-    return bcrypt
+
+    User.findOne()
+    .sort('-id')
+    .lean()
+    .then((lastUser) => {
+      if(lastUser) {
+        maxId = Number(lastUser.id) + 1;
+      }
+    })
+    .then(()=>{
+      return bcrypt
       .genSalt(10) // 產生「鹽」，並設定複雜度係數為 10
       .then(salt => bcrypt.hash(password, salt)) // 為使用者密碼「加鹽」，產生雜湊值
       .then(hash => User.create({
+        "id": maxId,
         name,
         email,
         password: hash // 用雜湊值取代原本的使用者密碼
       }))
       .then(() => res.redirect('/'))
       .catch(err => console.log(err))
+    })
   })
 })
 
