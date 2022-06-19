@@ -23,13 +23,15 @@ function getCategorys() {
 
 router.get('/new', (req, res) => {
   const allCategorys = req.app.get('allCategorys')
+  console.log("allCategorys:\n"+allCategorys)
+
 	return res.render('new', {allCategorys})
 })
 
 router.post('/', (req, res) => {
+  const allCategorys = req.app.get('allCategorys')
   const userId = req.user._id
   let maxId = 1;
-  //console.log(req.body)
 
   const { name, date, categoryId, amount } = req.body
   const errors = []
@@ -38,11 +40,12 @@ router.post('/', (req, res) => {
   }
   if (errors.length) {
     return res.render('new', {
+      allCategorys,
       errors,
       name,
       date,
       categoryId,
-      amount
+      amount,
     })
   }
 
