@@ -23,13 +23,10 @@ function getCategorys() {
 
 router.get('/new', (req, res) => {
   const allCategorys = req.app.get('allCategorys')
-  console.log("allCategorys:\n"+allCategorys)
-
 	return res.render('new', {allCategorys})
 })
 
-router.post('/', (req, res) => {
-  const allCategorys = req.app.get('allCategorys')
+router.post('/new', (req, res) => {
   const userId = req.user._id
   let maxId = 1;
 
@@ -39,14 +36,7 @@ router.post('/', (req, res) => {
     errors.push({ message: '所有欄位都是必填。' })
   }
   if (errors.length) {
-    return res.render('new', {
-      allCategorys,
-      errors,
-      name,
-      date,
-      categoryId,
-      amount,
-    })
+    return res.render('new', {errors})
   }
 
   return RecordModel.findOne()
@@ -94,9 +84,27 @@ router.get('/:id/edit', (req, res) => {
   })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id/edit', (req, res) => {
+  const allCategorys = req.app.get('allCategorys')
   const userId = req.user._id
   const id = Number(req.params.id)
+
+  const { name, date, categoryId, amount } = req.body
+  const errors = []
+  if (!name || !date || !categoryId || !amount) {
+    errors.push({ message: '所有欄位都是必填。' })
+  }
+  if (errors.length) {
+    const record = { id, name, date, categoryId, amount}
+    const result = allCategorys.filter(obj => Number(obj.id) === Number(record.categoryId))
+
+    return  res.render('edit', {
+      allCategorys,
+      errors,
+      record, 
+      "category":result[0] 
+    })
+  }
 
   return RecordModel.findOne({ id, userId })
   .then((record) => {
