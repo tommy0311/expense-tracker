@@ -1,13 +1,13 @@
 const CategoryModel = require('./category')
 
- let getCategorys = ()=> {
+ let getCategories = ()=> {
   return new Promise((resolve, reject) => {
     CategoryModel
     .find()
     .lean()
     .sort( { id:'asc' })
-    .then((categorys) =>{
-      resolve(categorys)
+    .then((categories) =>{
+      resolve(categories)
     })
     .catch( error => {
       reject(error)
@@ -15,4 +15,4 @@ const CategoryModel = require('./category')
   });
 }
 
-module.exports = getCategorys
+module.exports = getCategories

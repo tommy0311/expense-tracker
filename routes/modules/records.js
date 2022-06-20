@@ -3,11 +3,11 @@ const router = express.Router()
 
 const RecordModel = require('../../models/record')
 const CategoryModel = require('../../models/category')
-const getCategorys =  require('../../models/getCategorys')
+const getCategories =  require('../../models/getCategories')
 
 router.get('/new', (req, res) => {
-  const allCategorys = req.app.get('allCategorys')
-	return res.render('new', {allCategorys})
+  const allCategories = req.app.get('allCategories')
+	return res.render('new', {allCategories})
 })
 
 router.post('/new', (req, res) => {
@@ -54,13 +54,13 @@ router.post('/new', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const id = Number(req.params.id)
-  const allCategorys = req.app.get('allCategorys')
+  const allCategories = req.app.get('allCategories')
 
   return RecordModel.findOne({ id, userId })
   .lean()
   .then((record) => {
-    const result = allCategorys.filter(obj => Number(obj.id) === record.categoryId)
-    res.render('edit', { record, allCategorys, "category":result[0] })
+    const result = allCategories.filter(obj => Number(obj.id) === record.categoryId)
+    res.render('edit', { record, allCategories, "category":result[0] })
   })
   .catch(error => {
     console.log(error)
@@ -69,7 +69,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.put('/:id/edit', (req, res) => {
-  const allCategorys = req.app.get('allCategorys')
+  const allCategories = req.app.get('allCategories')
   const userId = req.user._id
   const id = Number(req.params.id)
 
@@ -80,10 +80,10 @@ router.put('/:id/edit', (req, res) => {
   }
   if (errors.length) {
     const record = { id, name, date, categoryId, amount}
-    const result = allCategorys.filter(obj => Number(obj.id) === Number(record.categoryId))
+    const result = allCategories.filter(obj => Number(obj.id) === Number(record.categoryId))
 
     return  res.render('edit', {
-      allCategorys,
+      allCategories,
       errors,
       record, 
       "category":result[0] 

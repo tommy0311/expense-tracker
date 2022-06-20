@@ -12,7 +12,7 @@ const routes = require('./routes') // It is equal to require('./routes/index')
 
 const db = require('./config/mongoose')
 const usePassport = require('./config/passport')
-const getCategorys =  require('./models/getCategorys')
+const getCategories =  require('./models/getCategories')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -44,8 +44,8 @@ app.use((req, res, next) => {
 app.use(routes)
 
 db.once('open', () => {
-  getCategorys()
-  .then((categorys) => app.set('allCategorys', categorys))
+  getCategories()
+  .then((categories) => app.set('allCategories', categories))
   .then(() => app.listen(port, () => {
     console.log(`Express is listening on http://localhost:${port}`);
   }))

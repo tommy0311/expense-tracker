@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
   let category = undefined
   const categoryMenu = req.query.categoryMenu ? Number(req.query.categoryMenu) : 0
   const findObj = categoryMenu ? { userId, "categoryId": categoryMenu } : { userId }
-  const allCategorys = req.app.get('allCategorys')
+  const allCategories = req.app.get('allCategories')
 
   CategoryModel.findOne({ "id": categoryMenu })
   .lean()
@@ -28,7 +28,7 @@ router.get("/", (req, res) => {
       for (const [index, record] of records.entries()){
         totalAmount = totalAmount + record.amount
       }
-      res.render("index", { records, allCategorys, category, totalAmount})
+      res.render("index", { records, allCategories, category, totalAmount})
     })
     .catch(error => console.log(error))
   })
