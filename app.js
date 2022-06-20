@@ -9,7 +9,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const routes = require('./routes') // It is equal to require('./routes/index')
-require('./config/mongoose')
+
+const db = require('./config/mongoose')
 const usePassport = require('./config/passport')
 const getCategorys =  require('./models/getCategorys')
 
@@ -40,13 +41,12 @@ app.use((req, res, next) => {
   next()
 })
 
-getCategorys().then( (categorys) => {
-  app.set('allCategorys', categorys);
-})
-
 app.use(routes)
 
-// localhost:3000 
-app.listen(port, () => {
-  console.log(`Express is listening on http://localhost:${port}`);
-});
+db.once('open', () => {
+  getCategorys()
+  .then((categorys) => app.set('allCategorys', categorys))
+  .then(() => app.listen(port, () => {
+    console.log(`Express is listening on http://localhost:${port}`);
+  }))
+})
