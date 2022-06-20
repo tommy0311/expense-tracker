@@ -5,22 +5,6 @@ const RecordModel = require('../../models/record')
 const CategoryModel = require('../../models/category')
 const getCategorys =  require('../../models/getCategorys')
 
-/*
-function getCategorys() {
-  return new Promise((resolve, reject) => {
-    CategoryModel
-    .find()
-    .lean()
-    .sort( { id:'asc' })
-    .then((categorys) =>{
-      resolve(categorys)
-    })
-    .catch( error => {
-      reject(error)`
-    })
-  });
-}*/
-
 router.get('/new', (req, res) => {
   const allCategorys = req.app.get('allCategorys')
 	return res.render('new', {allCategorys})
@@ -56,7 +40,7 @@ router.post('/new', (req, res) => {
       "amount": req.body.amount,
       "userId" : userId
     }
-    //console.log("record=" + JSON.stringify(record))
+
     RecordModel.create(record)     
       .then(() => res.redirect('/')) 
       .catch(error => console.log(error))
