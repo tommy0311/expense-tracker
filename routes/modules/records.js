@@ -2,8 +2,6 @@ const express = require('express')
 const router = express.Router()
 
 const RecordModel = require('../../models/record')
-const CategoryModel = require('../../models/category')
-const getCategories =  require('../../models/getCategories')
 
 router.get('/new', (req, res) => {
   const allCategories = req.app.get('allCategories')
@@ -11,6 +9,7 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
+  const allCategories = req.app.get('allCategories')
   const userId = req.user._id
   let maxId = 1;
 
@@ -20,7 +19,7 @@ router.post('/new', (req, res) => {
     errors.push({ message: '所有欄位都是必填。' })
   }
   if (errors.length) {
-    return res.render('new', {errors})
+    return res.render('new', {allCategories, errors})
   }
 
   return RecordModel.findOne()
